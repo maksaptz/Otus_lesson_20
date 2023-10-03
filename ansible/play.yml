@@ -15,6 +15,6 @@
   roles:
         - coreForward
         - firewall 
-        - routes
-        - knock  
+        - routes  
         - reboot
+        - knock
