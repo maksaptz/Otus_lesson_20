@@ -1,0 +1,22 @@
+---
+- name: install nmap
+  shell: apt update && apt install nmap -y
+  when: (ansible_hostname == "centralServer")
+
+- name: add script
+  template:
+    src: templates/knock.sh
+    dest: /home/vagrant/knock.sh
+    owner: vagrant
+    group: vagrant
+    mode: 0700
+  when: (ansible_hostname == "centralServer")
+
+- name: ssh access with pass
+  template:
+    src: templates/ssh.conf
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0600
+  when: (ansible_hostname == "inetRouter")

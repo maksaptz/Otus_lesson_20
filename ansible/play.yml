@@ -1,0 +1,20 @@
+---
+- hosts: centralServer
+  become:
+    true
+  become_method:
+    sudo
+  roles:
+        - nginx
+              
+- hosts: all
+  become:
+    true
+  become_method:
+    sudo
+  roles:
+        - coreForward
+        - firewall 
+        - routes
+        - knock  
+        - reboot

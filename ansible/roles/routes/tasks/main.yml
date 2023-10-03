@@ -1,0 +1,76 @@
+--- 
+- name: install traceroute
+  shell: apt update && apt install traceroute -y
+  when: (ansible_distribution == "Ubuntu")
+
+- name: set up routes inetRouter
+  template:
+    src: templates/inetRouter
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_hostname == "inetRouter")
+
+- name: set up routes inetRouter2
+  template:
+    src: templates/inetRouter2
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_hostname == "inetRouter2")
+
+- name: set up route on centralRouter
+  template:
+    src: templates/centralRouter
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_hostname == "centralRouter")
+
+- name: set up route on centralServer
+  template:
+    src: templates/centralServer
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_hostname == "centralServer")
+
+- name: set up route on office2Router
+  template:
+    src: templates/office2Router
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_hostname == "office2Router")
+
+- name: set up route on office2Server
+  template:
+    src: templates/office2Server
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_hostname == "office2Server")
+
+- name: set up route on office1Router
+  template:
+    src: templates/office1Router
+    dest: /etc/netplan/50-vagrant.yaml
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_hostname == "office1Router")
+ 
+- name: set up route on office1Server
+  template:
+    src: templates/office1Server
+    dest: /etc/netplan/50-vagrant.yaml
+    owner: root
+    group: root
+    mode: 0644
+  when: (ansible_hostname == "office1Server")

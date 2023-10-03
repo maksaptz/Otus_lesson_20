@@ -1,0 +1,13 @@
+---
+- name: reboot
+  ansible.builtin.reboot:
+#  service:
+#    name: networking
+#    state: restarted
+#  when: ansible_distribution == 'Debian'
+#    
+#- name: Restart network
+#  service:
+#    name: networkd-dispatcher
+#    state: restarted
+#  when: ansible_distribution == 'Ubuntu'
