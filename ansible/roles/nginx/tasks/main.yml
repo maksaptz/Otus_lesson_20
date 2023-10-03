@@ -1,8 +1,9 @@
 ---
 - name: Install Nginx Web Server on Debian Family
   apt:
-    name=nginx
-    state=latest
+    name: nginx
+    state: latest
+    update_cache: yes
   notify:
     - nginx systemd
 - name: Replace nginx.conf
